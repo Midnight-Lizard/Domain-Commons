@@ -7,11 +7,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{6D208FD8-C
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		.gitlab-ci.yml = .gitlab-ci.yml
+		Dockerfile = Dockerfile
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MidnightLizard.Commons.Domain", "MidnightLizard.Commons.Domain\MidnightLizard.Commons.Domain.csproj", "{0CADC34E-C348-42C3-915B-572321DE5E17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MidnightLizard.Commons.Domain", "package\MidnightLizard.Commons.Domain.csproj", "{149D5F73-D789-4C13-B097-925054492307}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,12 +21,12 @@ Global
 		Test|Any CPU = Test|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0CADC34E-C348-42C3-915B-572321DE5E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0CADC34E-C348-42C3-915B-572321DE5E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0CADC34E-C348-42C3-915B-572321DE5E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0CADC34E-C348-42C3-915B-572321DE5E17}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0CADC34E-C348-42C3-915B-572321DE5E17}.Test|Any CPU.ActiveCfg = Test|Any CPU
-		{0CADC34E-C348-42C3-915B-572321DE5E17}.Test|Any CPU.Build.0 = Test|Any CPU
+		{149D5F73-D789-4C13-B097-925054492307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{149D5F73-D789-4C13-B097-925054492307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{149D5F73-D789-4C13-B097-925054492307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{149D5F73-D789-4C13-B097-925054492307}.Release|Any CPU.Build.0 = Release|Any CPU
+		{149D5F73-D789-4C13-B097-925054492307}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{149D5F73-D789-4C13-B097-925054492307}.Test|Any CPU.Build.0 = Test|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

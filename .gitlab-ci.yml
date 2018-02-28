@@ -4,20 +4,9 @@ services:
 variables:
   DOCKER_DRIVER: overlay
 
-dotnet-test:
-  image: microsoft/aspnetcore-build:2-jessie
-  stage: test
-  only:
-  - master
-  script:
-  - dotnet test -c Test
-
-nuget-deploy:
-  image: microsoft/aspnetcore-build:2-jessie
+docker-build-test-deploy:
   stage: deploy
   only:
   - master
   script:
-  - dotnet build -c Release
-  - ls ./package
-  - dotnet nuget push ./package/bin/Release/*.nupkg -k $NUGET_KEY -s https://api.nuget.org/v3/index.json
+  - docker build --build-arg NUGET_KEY=$NUGET_KEY
