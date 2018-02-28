@@ -9,4 +9,4 @@ docker-build-test-deploy:
   only:
   - master
   script:
-  - docker build --build-arg NUGET_KEY=$NUGET_KEY
+  - docker build --build-arg NUGET_KEY=$NUGET_KEY .
