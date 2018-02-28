@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <LangVersion>Latest</LangVersion>
+    <IsPackable>true</IsPackable>
     <OutputType>Library</OutputType>
     <Configurations>Debug;Release;Test</Configurations>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
