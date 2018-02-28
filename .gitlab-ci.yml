@@ -3,8 +3,6 @@ services:
 - docker:dind
 variables:
   DOCKER_DRIVER: overlay
-  PROJ: domain-commons
-  GROUP: midnight-lizard
 
 dotnet-build:
   image: microsoft/aspnetcore-build:2-jessie
