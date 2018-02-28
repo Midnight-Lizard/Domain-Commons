@@ -4,14 +4,6 @@ services:
 variables:
   DOCKER_DRIVER: overlay
 
-dotnet-build:
-  image: microsoft/aspnetcore-build:2-jessie
-  stage: build
-  only:
-  - master
-  script:
-  - dotnet build -c Release
-
 dotnet-test:
   image: microsoft/aspnetcore-build:2-jessie
   stage: test
@@ -26,4 +18,5 @@ nuget-deploy:
   only:
   - master
   script:
+  - dotnet build -c Release
   - dotnet nuget push ./package/bin/Release/*.nupkg -k $NUGET_KEY -s https://api.nuget.org/v3/index.json
