@@ -5,6 +5,14 @@
     <LangVersion>Latest</LangVersion>
     <OutputType>Library</OutputType>
     <Configurations>Debug;Release;Test</Configurations>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Pavel Agarkov</Authors>
+    <Company>Midnight-Lizard</Company>
+    <Description>Common functionality for Domain logic of Midnight Lizard bounded contexts</Description>
+    <PackageProjectUrl>https://github.com/pavel-agarkov/Midnight-Lizard-Commons-Domain</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/pavel-agarkov/Midnight-Lizard-Commons-Domain/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/pavel-agarkov/Midnight-Lizard-Commons-Domain.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
