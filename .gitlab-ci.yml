@@ -19,4 +19,5 @@ nuget-deploy:
   - master
   script:
   - dotnet build -c Release
+  - ls ./package
   - dotnet nuget push ./package/bin/Release/*.nupkg -k $NUGET_KEY -s https://api.nuget.org/v3/index.json
