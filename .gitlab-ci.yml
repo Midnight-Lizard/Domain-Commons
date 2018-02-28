@@ -1,0 +1,31 @@
+image: docker:latest
+services:
+- docker:dind
+variables:
+  DOCKER_DRIVER: overlay
+  PROJ: domain-commons
+  GROUP: midnight-lizard
+
+dotnet-build:
+  image: microsoft/aspnetcore-build:2-jessie
+  stage: build
+  only:
+  - master
+  script:
+  - dotnet build -c Release
+
+dotnet-test:
+  image: microsoft/aspnetcore-build:2-jessie
+  stage: test
+  only:
+  - master
+  script:
+  - dotnet test -c Test
+
+nuget-deploy:
+  image: microsoft/aspnetcore-build:2-jessie
+  stage: deploy
+  only:
+  - master
+  script:
+  - dotnet nuget push ./package/bin/Release/*.nupkg -k $NUGET_KEY -s https://api.nuget.org/v3/index.json

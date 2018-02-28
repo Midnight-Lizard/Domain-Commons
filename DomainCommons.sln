@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{6D208FD8-C16D-4EEA-9525-2202CDE86738}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		.gitlab-ci.yml = .gitlab-ci.yml
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
