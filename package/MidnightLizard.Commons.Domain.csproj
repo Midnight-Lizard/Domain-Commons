@@ -14,6 +14,7 @@
     <PackageLicenseUrl>https://github.com/pavel-agarkov/Midnight-Lizard-Commons-Domain/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/pavel-agarkov/Midnight-Lizard-Commons-Domain.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
