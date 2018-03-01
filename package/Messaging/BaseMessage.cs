@@ -10,7 +10,6 @@ namespace MidnightLizard.Commons.Domain.Messaging
     public abstract class BaseMessage : IEquatable<BaseMessage>
     {
         public Guid Id { get; protected set; }
-        public abstract Version LatestVersion();
 
         public override bool Equals(object obj)
         {
