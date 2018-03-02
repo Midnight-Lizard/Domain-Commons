@@ -14,13 +14,14 @@
     <PackageLicenseUrl>https://github.com/pavel-agarkov/Midnight-Lizard-Commons-Domain/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/pavel-agarkov/Midnight-Lizard-Commons-Domain.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="7.5.0" />
     <PackageReference Include="MediatR" Version="4.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="SemanticVersioning" Version="1.0.0" />
   </ItemGroup>
 
   <Choose>
