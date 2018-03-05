@@ -24,16 +24,19 @@ namespace MidnightLizard.Commons.Domain.Messaging
         public Guid Id { get => this.Payload.Id; }
         public TAggregateId AggregateId { get => this.Payload.AggregateId; }
 
+        public UserId UserId { get; }
+
         public TMessage Payload { get; }
         public Guid CorrelationId { get; }
         public DateTime RequestTimestamp { get; }
         public Type DeserializerType { get; set; }
 
-        public TransportMessage(TMessage message, Guid correlationId, DateTime requestTimestamp)
+        public TransportMessage(TMessage message, Guid correlationId, DateTime requestTimestamp, UserId userId)
         {
             Payload = message;
             CorrelationId = correlationId;
             RequestTimestamp = requestTimestamp;
+            UserId = userId;
         }
     }
 }

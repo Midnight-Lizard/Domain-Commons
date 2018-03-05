@@ -11,7 +11,7 @@ namespace MidnightLizard.Commons.Domain.Model
     {
         public T Value { get; protected set; }
 
-        public DomainEntityId()
+        protected DomainEntityId()
         {
         }
 
@@ -52,8 +52,6 @@ namespace MidnightLizard.Commons.Domain.Model
             }
 
             return true;
-
-
         }
     }
 }
