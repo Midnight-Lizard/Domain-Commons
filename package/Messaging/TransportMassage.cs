@@ -14,6 +14,7 @@ namespace MidnightLizard.Commons.Domain.Messaging
         TMessage Payload { get; }
         Guid CorrelationId { get; }
         DateTime RequestTimestamp { get; }
+        UserId UserId { get; }
         Type DeserializerType { get; set; }
     }
 
