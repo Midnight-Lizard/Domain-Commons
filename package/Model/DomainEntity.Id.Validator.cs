@@ -11,17 +11,7 @@ namespace MidnightLizard.Commons.Domain.Model
     {
         public DomainEntityIdValidator()
         {
-            RuleFor(id => id.Value).NotEmpty().NotNull().Must(value =>
-            {
-                switch (value)
-                {
-                    case Guid guid:
-                        return guid != new Guid();
-
-                    default:
-                        return true;
-                }
-            });
+            RuleFor(id => id.Value).NotEmpty();
         }
     }
 }
