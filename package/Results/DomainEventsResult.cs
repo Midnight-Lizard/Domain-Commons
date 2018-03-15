@@ -9,11 +9,11 @@ namespace MidnightLizard.Commons.Domain.Results
     public class DomainEventsResult<TAggregateId> : DomainResult
         where TAggregateId : DomainEntityId
     {
-        public IEnumerable<TransportMessage<DomainEvent<TAggregateId>, TAggregateId>> Events { get; }
+        public IEnumerable<ITransportMessage<DomainEvent<TAggregateId>, TAggregateId>> Events { get; }
 
         public DomainEventsResult() { }
 
-        public DomainEventsResult(IEnumerable<TransportMessage<DomainEvent<TAggregateId>, TAggregateId>> events)
+        public DomainEventsResult(IEnumerable<ITransportMessage<DomainEvent<TAggregateId>, TAggregateId>> events)
         {
             Events = events;
         }
