@@ -11,6 +11,7 @@ namespace MidnightLizard.Commons.Domain.Messaging
     public interface ITransportMessage<out TMessage> : IRequest<DomainResult>
         where TMessage : BaseMessage
     {
+        Guid Id { get; }
         TMessage Payload { get; }
         Guid CorrelationId { get; }
         DateTime RequestTimestamp { get; }
@@ -18,7 +19,14 @@ namespace MidnightLizard.Commons.Domain.Messaging
         Type DeserializerType { get; set; }
     }
 
-    public class TransportMessage<TMessage, TAggregateId> : ITransportMessage<TMessage>
+    public interface ITransportMessage<out TMessage, out TAggregateId> : ITransportMessage<TMessage>
+        where TAggregateId : DomainEntityId
+        where TMessage : DomainMessage<TAggregateId>
+    {
+        TAggregateId AggregateId { get; }
+    }
+
+    public class TransportMessage<TMessage, TAggregateId> : ITransportMessage<TMessage, TAggregateId>
         where TAggregateId : DomainEntityId
         where TMessage : DomainMessage<TAggregateId>
     {
