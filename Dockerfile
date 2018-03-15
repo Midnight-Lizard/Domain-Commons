@@ -3,7 +3,7 @@
 #===========================================#
 FROM microsoft/aspnetcore-build:2-jessie as dotnet-build
 WORKDIR /build
-COPY . /build/
+COPY . .
 RUN dotnet build -c Release
 
 #===========================================#

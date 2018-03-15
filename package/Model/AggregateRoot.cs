@@ -16,7 +16,7 @@ namespace MidnightLizard.Commons.Domain.Model
         private bool isNew;
         public virtual bool IsNew() => isNew;
 
-        public abstract void Reduce(DomainEvent<TAggregateId> @event);
+        public abstract void Reduce(DomainEvent<TAggregateId> @event, UserId userId);
 
         public AggregateRoot() { }
 
@@ -33,20 +33,20 @@ namespace MidnightLizard.Commons.Domain.Model
             return events;
         }
 
-        public virtual void AddDomainEvent(DomainEvent<TAggregateId> @event)
+        public virtual void AddDomainEvent(DomainEvent<TAggregateId> @event, UserId userId)
         {
             @event.Generation = this.Generation + 1;
-            this.Reduce(@event);
+            this.Reduce(@event, userId);
             this.Generation = @event.Generation;
             this.pendingEvents.Add(@event);
             this.isNew = false;
         }
 
-        public virtual void ReplayDomainEvents(IEnumerable<DomainEvent<TAggregateId>> events)
+        public virtual void ReplayDomainEvents(IEnumerable<(DomainEvent<TAggregateId> @event, UserId userId)> eventsWithUsers)
         {
-            foreach (var @event in events)
+            foreach (var (@event, userId) in eventsWithUsers)
             {
-                this.Reduce(@event);
+                this.Reduce(@event, userId);
                 this.Generation = @event.Generation;
             }
         }
