@@ -15,6 +15,7 @@ namespace MidnightLizard.Commons.Domain.Messaging
         TMessage Payload { get; }
         Guid CorrelationId { get; }
         DateTime RequestTimestamp { get; }
+        DateTime? EventTimestamp { get; }
         UserId UserId { get; }
         Type DeserializerType { get; set; }
     }
@@ -38,13 +39,15 @@ namespace MidnightLizard.Commons.Domain.Messaging
         public TMessage Payload { get; }
         public Guid CorrelationId { get; }
         public DateTime RequestTimestamp { get; }
+        public DateTime? EventTimestamp { get; }
         public Type DeserializerType { get; set; }
 
-        public TransportMessage(TMessage message, Guid correlationId, DateTime requestTimestamp, UserId userId)
+        public TransportMessage(TMessage message, Guid correlationId, UserId userId, DateTime requestTimestamp, DateTime? eventTimestamp = null)
         {
             Payload = message;
             CorrelationId = correlationId;
             RequestTimestamp = requestTimestamp;
+            EventTimestamp = eventTimestamp;
             UserId = userId;
         }
     }
