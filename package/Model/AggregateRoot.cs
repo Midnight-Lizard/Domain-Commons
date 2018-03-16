@@ -3,6 +3,7 @@ using MidnightLizard.Commons.Domain.Messaging;
 using MidnightLizard.Commons.Domain.Results;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MidnightLizard.Commons.Domain.Model
@@ -44,10 +45,17 @@ namespace MidnightLizard.Commons.Domain.Model
 
         public virtual void ReplayDomainEvents(IEnumerable<(DomainEvent<TAggregateId> @event, UserId userId)> eventsWithUsers)
         {
-            foreach (var (@event, userId) in eventsWithUsers)
+            if (eventsWithUsers != null)
             {
-                this.Reduce(@event, userId);
-                this.Generation = @event.Generation;
+                foreach (var (@event, userId) in eventsWithUsers)
+                {
+                    this.Reduce(@event, userId);
+                    this.Generation = @event.Generation;
+                }
+                if (eventsWithUsers.Count() > 0)
+                {
+                    this.isNew = false;
+                }
             }
         }
     }
