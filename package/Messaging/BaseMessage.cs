@@ -27,5 +27,16 @@ namespace MidnightLizard.Commons.Domain.Messaging
         {
             return other != null && other.Id == this.Id;
         }
+
+        public static bool operator ==(BaseMessage left, BaseMessage right)
+        {
+            if (left is null) return right is null ? true : false;
+            else return left.Equals(right);
+        }
+
+        public static bool operator !=(BaseMessage left, BaseMessage right)
+        {
+            return !(left == right);
+        }
     }
 }

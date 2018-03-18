@@ -56,5 +56,16 @@ namespace MidnightLizard.Commons.Domain.Model
             }
             return !thisValues.MoveNext() && !otherValues.MoveNext();
         }
+
+        public static bool operator ==(ValueObject left, ValueObject right)
+        {
+            if (left is null) return right is null ? true : false;
+            else return left.Equals(right);
+        }
+
+        public static bool operator !=(ValueObject left, ValueObject right)
+        {
+            return !(left == right);
+        }
     }
 }

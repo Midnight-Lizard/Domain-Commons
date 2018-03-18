@@ -53,5 +53,16 @@ namespace MidnightLizard.Commons.Domain.Model
 
             return true;
         }
+
+        public static bool operator ==(DomainEntityId<T> left, DomainEntityId<T> right)
+        {
+            if (left is null) return right is null ? true : false;
+            else return left.Equals(right);
+        }
+
+        public static bool operator !=(DomainEntityId<T> left, DomainEntityId<T> right)
+        {
+            return !(left == right);
+        }
     }
 }
