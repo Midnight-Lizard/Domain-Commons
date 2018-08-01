@@ -10,9 +10,9 @@
     <Authors>Pavel Agarkov</Authors>
     <Company>Midnight-Lizard</Company>
     <Description>Common functionality for Domain logic of Midnight Lizard bounded contexts</Description>
-    <PackageProjectUrl>https://github.com/pavel-agarkov/Midnight-Lizard-Commons-Domain</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/pavel-agarkov/Midnight-Lizard-Commons-Domain/blob/master/LICENSE</PackageLicenseUrl>
-    <RepositoryUrl>https://github.com/pavel-agarkov/Midnight-Lizard-Commons-Domain.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Midnight-Lizard/Domain-Commons</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/Midnight-Lizard/Domain-Commons/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/Midnight-Lizard/Domain-Commons.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Version>2.1.0</Version>
   </PropertyGroup>
