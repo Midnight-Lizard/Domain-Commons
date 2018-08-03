@@ -14,7 +14,7 @@
     <PackageLicenseUrl>https://github.com/Midnight-Lizard/Domain-Commons/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/Midnight-Lizard/Domain-Commons.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>2.1.0</Version>
+    <Version>2.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
