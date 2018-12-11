@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <LangVersion>Latest</LangVersion>
     <IsPackable>true</IsPackable>
     <OutputType>Library</OutputType>
@@ -14,20 +14,23 @@
     <PackageLicenseUrl>https://github.com/Midnight-Lizard/Domain-Commons/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/Midnight-Lizard/Domain-Commons.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>2.1.1</Version>
+    <Version>2.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="7.6.104" />
-    <PackageReference Include="MediatR" Version="5.1.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="FluentValidation" Version="8.1.1" />
+    <PackageReference Include="MediatR" Version="6.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
   <Choose>
     <When Condition=" '$(Configuration)'=='Test' ">
       <ItemGroup>
-        <PackageReference Include="MidnightLizard.Testing.Utilities" Version="2.1.0" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+        <PackageReference Include="MidnightLizard.Testing.Utilities" Version="2.3.0" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
       </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'!='Test' ">
