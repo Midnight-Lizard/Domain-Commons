@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MidnightLizard.Commons.Domain.Messaging
 {
-    public abstract class AccessDeniedEvent<TAggregateId> : DomainEvent<TAggregateId>
+    public abstract class AccessDeniedEvent<TAggregateId> : FailedDomainEvent<TAggregateId>
         where TAggregateId : DomainEntityId
     {
         protected AccessDeniedEvent() { }

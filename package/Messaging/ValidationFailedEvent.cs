@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MidnightLizard.Commons.Domain.Messaging
 {
-    public abstract class ValidationFailedEvent<TAggregateId> : DomainEvent<TAggregateId>
+    public abstract class ValidationFailedEvent<TAggregateId> : FailedDomainEvent<TAggregateId>
         where TAggregateId : DomainEntityId
     {
         public List<(string PropertyName, string ErrorMessage)> ValidationErrors { get; private set; }

@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 namespace MidnightLizard.Commons.Domain.Interfaces
 {
     /// <summary>
-    /// Reads and writes domain events into events store
+    /// Reads and writes event sourced domain events into events store
     /// </summary>
     /// <typeparam name="TAggregateId">Type of Aggregate ID events of wich this accessor processing</typeparam>
     public interface IDomainEventStore<TAggregateId>
         where TAggregateId : DomainEntityId
     {
         Task<DomainEventsResult<TAggregateId>> GetEvents(TAggregateId aggregateId, int sinceGeneration);
-        Task<DomainResult> SaveEvent(ITransportMessage<DomainEvent<TAggregateId>> @event);
+        Task<DomainResult> SaveEvent(ITransportMessage<EventSourcedDomainEvent<TAggregateId>> @event);
     }
 }

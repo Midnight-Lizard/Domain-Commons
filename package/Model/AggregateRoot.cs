@@ -1,10 +1,7 @@
 ﻿using MidnightLizard.Commons.Domain.Interfaces;
 using MidnightLizard.Commons.Domain.Messaging;
-using MidnightLizard.Commons.Domain.Results;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MidnightLizard.Commons.Domain.Model
 {
@@ -15,15 +12,18 @@ namespace MidnightLizard.Commons.Domain.Model
 
         public virtual int Generation { get; protected set; }
         private bool isNew;
-        public virtual bool IsNew() => isNew;
+        public virtual bool IsNew()
+        {
+            return this.isNew;
+        }
 
-        public abstract void Reduce(DomainEvent<TAggregateId> @event, UserId userId);
+        public abstract void Reduce(EventSourcedDomainEvent<TAggregateId> @event, UserId userId);
 
         public AggregateRoot() { }
 
         public AggregateRoot(TAggregateId aggregateId)
         {
-            Id = aggregateId;
+            this.Id = aggregateId;
             this.isNew = true;
         }
 
@@ -36,14 +36,32 @@ namespace MidnightLizard.Commons.Domain.Model
 
         public virtual void AddDomainEvent(DomainEvent<TAggregateId> @event, UserId userId)
         {
-            @event.Generation = this.Generation + 1;
-            this.Reduce(@event, userId);
-            this.Generation = @event.Generation;
-            this.pendingEvents.Add(@event);
-            this.isNew = false;
+            switch (@event)
+            {
+                case EventSourcedDomainEvent<TAggregateId> eventSourced:
+                {
+                    @event.Generation = this.Generation + 1;
+                    this.Reduce(eventSourced, userId);
+                    this.Generation = @event.Generation;
+                    this.pendingEvents.Add(@event);
+                    this.isNew = false;
+                    break;
+                }
+
+                case FailedDomainEvent<TAggregateId> failed:
+                case IntegrationEvent<TAggregateId> integration:
+                {
+                    @event.Generation = this.Generation;
+                    this.pendingEvents.Add(@event);
+                    break;
+                }
+
+                default:
+                    break;
+            }
         }
 
-        public virtual void ReplayDomainEvents(IEnumerable<(DomainEvent<TAggregateId> @event, UserId userId)> eventsWithUsers)
+        public virtual void ReplayEventSourcedDomainEvents(IEnumerable<(EventSourcedDomainEvent<TAggregateId> @event, UserId userId)> eventsWithUsers)
         {
             if (eventsWithUsers != null)
             {
