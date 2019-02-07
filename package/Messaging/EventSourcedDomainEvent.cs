@@ -2,7 +2,7 @@
 
 namespace MidnightLizard.Commons.Domain.Messaging
 {
-    public class EventSourcedDomainEvent<TAggregateId> : DomainEvent<TAggregateId>
+    public abstract class EventSourcedDomainEvent<TAggregateId> : DomainEvent<TAggregateId>
         where TAggregateId : DomainEntityId
     {
         protected EventSourcedDomainEvent() { }

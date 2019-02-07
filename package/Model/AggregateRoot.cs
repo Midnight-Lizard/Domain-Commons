@@ -34,31 +34,25 @@ namespace MidnightLizard.Commons.Domain.Model
             return events;
         }
 
-        public virtual void AddDomainEvent(DomainEvent<TAggregateId> @event, UserId userId)
+        public virtual void AddDomainEvent(FailedDomainEvent<TAggregateId> @event)
         {
-            switch (@event)
-            {
-                case EventSourcedDomainEvent<TAggregateId> eventSourced:
-                {
-                    @event.Generation = this.Generation + 1;
-                    this.Reduce(eventSourced, userId);
-                    this.Generation = @event.Generation;
-                    this.pendingEvents.Add(@event);
-                    this.isNew = false;
-                    break;
-                }
+            @event.Generation = this.Generation;
+            this.pendingEvents.Add(@event);
+        }
 
-                case FailedDomainEvent<TAggregateId> failed:
-                case IntegrationEvent<TAggregateId> integration:
-                {
-                    @event.Generation = this.Generation;
-                    this.pendingEvents.Add(@event);
-                    break;
-                }
+        public virtual void AddDomainEvent(IntegrationEvent<TAggregateId> @event)
+        {
+            @event.Generation = this.Generation;
+            this.pendingEvents.Add(@event);
+        }
 
-                default:
-                    break;
-            }
+        public virtual void AddDomainEvent(EventSourcedDomainEvent<TAggregateId> @event, UserId userId)
+        {
+            @event.Generation = this.Generation + 1;
+            this.Reduce(@event, userId);
+            this.Generation = @event.Generation;
+            this.pendingEvents.Add(@event);
+            this.isNew = false;
         }
 
         public virtual void ReplayEventSourcedDomainEvents(IEnumerable<(EventSourcedDomainEvent<TAggregateId> @event, UserId userId)> eventsWithUsers)
