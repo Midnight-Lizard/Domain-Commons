@@ -17,7 +17,7 @@ namespace MidnightLizard.Commons.Domain.Model
             return this.isNew;
         }
 
-        public abstract void Reduce(EventSourcedDomainEvent<TAggregateId> @event, UserId userId);
+        protected abstract void Reduce(EventSourcedDomainEvent<TAggregateId> @event, UserId userId);
 
         public AggregateRoot() { }
 
@@ -34,19 +34,19 @@ namespace MidnightLizard.Commons.Domain.Model
             return events;
         }
 
-        public virtual void AddDomainEvent(FailedDomainEvent<TAggregateId> @event)
+        public virtual void AddFailedDomainEvent(FailedDomainEvent<TAggregateId> @event)
         {
             @event.Generation = this.Generation;
             this.pendingEvents.Add(@event);
         }
 
-        public virtual void AddDomainEvent(IntegrationEvent<TAggregateId> @event)
+        public virtual void AddIntegrationEvent(IntegrationEvent<TAggregateId> @event)
         {
             @event.Generation = this.Generation;
             this.pendingEvents.Add(@event);
         }
 
-        public virtual void AddDomainEvent(EventSourcedDomainEvent<TAggregateId> @event, UserId userId)
+        public virtual void AddEventSourcedDomainEvent(EventSourcedDomainEvent<TAggregateId> @event, UserId userId)
         {
             @event.Generation = this.Generation + 1;
             this.Reduce(@event, userId);

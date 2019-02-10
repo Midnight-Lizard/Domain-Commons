@@ -11,7 +11,7 @@ namespace MidnightLizard.Commons.Domain.Interfaces
         where TAggregateId : DomainEntityId
         where TAggregate : AggregateRoot<TAggregateId>
     {
-        Task Save(AggregateSnapshot<TAggregate, TAggregateId> aggregate);
+        Task Save(AggregateSnapshot<TAggregate, TAggregateId> snapshot);
 
         Task<AggregateSnapshot<TAggregate, TAggregateId>> Read(TAggregateId id);
     }

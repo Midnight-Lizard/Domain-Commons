@@ -23,6 +23,6 @@ namespace MidnightLizard.Commons.Domain.Results
         public DomainEventsResult(Exception ex) : base(ex) { }
 
         public DomainEventsResult(bool hasError, Exception ex, string errorMessage)
-            : base(hasError, ex, errorMessage) { }
+            : base(hasError, ex, errorMessage, DomainProblemLevel.Infrastructure) { }
     }
 }

@@ -8,10 +8,9 @@ namespace MidnightLizard.Commons.Domain.Interfaces
         where TAggregateId : DomainEntityId
     {
         IEnumerable<DomainEvent<TAggregateId>> ReleaseEvents();
-        void AddDomainEvent(FailedDomainEvent<TAggregateId> @event);
-        void AddDomainEvent(IntegrationEvent<TAggregateId> @event);
-        void AddDomainEvent(EventSourcedDomainEvent<TAggregateId> @event, UserId userId);
+        void AddFailedDomainEvent(FailedDomainEvent<TAggregateId> @event);
+        void AddIntegrationEvent(IntegrationEvent<TAggregateId> @event);
+        void AddEventSourcedDomainEvent(EventSourcedDomainEvent<TAggregateId> @event, UserId userId);
         void ReplayEventSourcedDomainEvents(IEnumerable<(EventSourcedDomainEvent<TAggregateId> @event, UserId userId)> eventsWithUsers);
-        void Reduce(EventSourcedDomainEvent<TAggregateId> @event, UserId userId);
     }
 }

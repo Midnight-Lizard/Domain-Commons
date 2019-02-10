@@ -2,7 +2,11 @@
 
 namespace MidnightLizard.Commons.Domain.Model
 {
-    public class SingleValueType<TValue> : IEquatable<SingleValueType<TValue>>
+    public class SingleValueType
+    {
+    }
+
+    public class SingleValueType<TValue> : SingleValueType, IEquatable<SingleValueType<TValue>>
         where TValue : IComparable, IComparable<TValue>, IEquatable<TValue>
     {
         public TValue Value { get; protected set; }
@@ -11,9 +15,9 @@ namespace MidnightLizard.Commons.Domain.Model
         {
         }
 
-        public SingleValueType(TValue id)
+        public SingleValueType(TValue value)
         {
-            this.Value = id;
+            this.Value = value;
         }
 
         public override bool Equals(object obj)
